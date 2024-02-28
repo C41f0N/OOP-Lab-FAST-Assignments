@@ -55,16 +55,18 @@ public:
         Course *newCourseList = new Course[numOfCourses];
 
         // copy old records to new list
-        for (int i = 0; i < numOfCourses; i++)
+        for (int i = 0; i < numOfCourses - 1; i++)
         {
-            this->courses[i] = this->courses[i];
+            newCourseList[i] = this->courses[i];
         }
-
-        cout << "Here" << endl;
         newCourseList[numOfCourses - 1] = course;
 
         // Delete old pointer
-        delete[] courses;
+
+        if (numOfCourses - 1 > 0)
+        {
+            delete[] courses;
+        }
 
         // Replace variable with new pointer
         courses = newCourseList;
@@ -113,6 +115,9 @@ public:
 
     void printEnrolledCourses()
     {
+        cout << "===================================" << endl;
+        cout << "     PRINTING ENROLLED COURSES" << endl;
+        cout << "===================================" << endl;
         for (int i = 0; i < numOfCourses; i++)
         {
             cout << "Course Name: " << courses[i].getName() << endl;
@@ -131,9 +136,13 @@ int main()
 
     Student student1("23K0703", "Sarim Ahmed");
 
+    student1.enroll(course1);
     student1.printEnrolledCourses();
 
-    student1.enroll(course1);
+    student1.enroll(course2);
+    student1.enroll(course3);
+    student1.printEnrolledCourses();
 
+    student1.drop(course2);
     student1.printEnrolledCourses();
 }
