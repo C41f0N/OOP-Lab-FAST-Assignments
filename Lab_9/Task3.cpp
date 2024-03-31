@@ -126,7 +126,6 @@ public:
         }
 
         // Get new car to add
-
         int option;
 
         cout << "Select the car you want to add:\n";
