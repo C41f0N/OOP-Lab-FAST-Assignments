@@ -132,8 +132,8 @@ public:
 
         // If valid targetChar, add course
         if (
-            targetChar == 'C' &&
-            targetChar == 'M' &&
+            targetChar == 'C' ||
+            targetChar == 'M' ||
             targetChar == 'E')
         {
 
@@ -170,10 +170,23 @@ public:
         }
         else
         {
-            salary += (1000 * (salary - 36));
+            salary += (1000 * (workingHours - 36));
             cout << salary << endl;
         }
     }
 };
 
-int main() {}
+int main()
+{
+
+    Course courseList[4] = {
+        Course("1111", "Computer Science", "2"),
+        Course("1111", "Electrical Engineering", "2"),
+        Course("1111", "Management Science", "2")};
+
+    Faculty facultyMember("Sarim", "CEO", "Computer Science", 10000000, 37);
+
+    facultyMember.assignCourse(courseList, 4);
+
+    facultyMember.printSalary();
+}
